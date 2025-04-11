@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bingo</title>
-    <link href="bingo.css" rel="stylesheet"/>
+    <title>Document</title>
+    <link href="cartela.css" rel="stylesheet">
+
 </head>
+
 <body>
     <table class="tabela">
         <thead>
-            <tr>
+            <tr class="cabeçalho">
                 <th>B</th>
                 <th>I</th>
                 <th>N</th>
@@ -19,8 +22,8 @@
         </thead>
         <tbody>
             <tr>
-                <td id="b1">12</td>
-                <td id="i1">20</td>
+                <td id="b1" onclick="MarcarCartela(this)">12</td>
+                <td id="i1">30</td>
                 <td id="n1">33</td>
                 <td id="g1">51</td>
                 <td id="o1">69</td>
@@ -29,14 +32,14 @@
                 <td id="b2">9</td>
                 <td id="i2">24</td>
                 <td id="n2">45</td>
-                <td id="g2">49</td>
+                <td id="g2">59</td>
                 <td id="o2">75</td>
             </tr>
             <tr>
                 <td id="b3">13</td>
                 <td id="i3">22</td>
                 <td id="n3">31</td>
-                <td id="g3">47</td>
+                <td id="g3">49</td>
                 <td id="o3">64</td>
             </tr>
             <tr>
@@ -55,5 +58,30 @@
             </tr>
         </tbody>
     </table>
+<br>
+
+<button id="botao" onclick="Piscar()">
+    Piscando o botão    
+</button>
+
+<script>
+    function MarcarCartela(td)
+    {
+        td.style.backgroundColor = 'black'
+        td.style.backgroundColor = 'white'
+    }
+    function Piscar()
+    {
+        var botao = document.getElementById("botao"); 
+        if(botao.style.backgroundColor == 'red')
+        {
+            botao.style.backgroundColor = 'blue';
+        }else{
+            botao.style.backgroundColor = 'red';
+        }
+    }
+
+</script>
 </body>
+
 </html>
