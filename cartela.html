@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARTELA DE BINGO</title>
-    <link href="bingo.css" rel="stylesheet"./>
+    <link href="cartela.css" rel="stylesheet"./>
 </head>
-
 <body>
     <table class="tabela">
         <thead>
@@ -58,6 +57,7 @@
         </thead>
              </tbody>
     </table>
+ 
     <br />
  
     <button id="botao" onclick="Piscar()" >
@@ -70,11 +70,11 @@
  
     <script>
         function GerarCartela(){
-            vetorB = GerarVetor(1,15)
-            vetorI = GerarVetor(16,30)
-            vetorN = GerarVetor(31,45)
-            vetorG = GerarVetor(46,60)
-            vetorO = GerarVetor(61,75)
+            vetorB = MisturarArray(GerarVetor(1,15))
+            vetorI = MisturarArray(GerarVetor(16,30))
+            vetorN = MisturarArray(GerarVetor(31,45))
+            vetorG = MisturarArray(GerarVetor(46,60))
+            vetorO = MisturarArray(GerarVetor(61,75))
         for (var i = 0; i <5; i++)
         {
         var td = document.getElementById("b"+(i+1))
@@ -95,9 +95,9 @@
  
         }
  
-        function GerarVetor(numeroInicial, numeroFinal){
+        function GerarVetor(NumeroInicial, NumeroFinal){
             vetor = []
-            for (i = numeroInicial; i <= numeroFinal; i++){
+            for (i = NumeroInicial; i <= NumeroFinal; i++){
                 vetor.push(i)
             }
             return vetor
@@ -105,11 +105,11 @@
         function Piscar()
         {
             var botao = document.getElementById("botao");
-            if(botao.style.backgroundColor == 'white')
+            if(botao.style.backgroundColor == 'blue')
         {
-            botao.style.backgroundColor = 'yellow';
+            botao.style.backgroundColor = 'red';
         } else{
-            botao.style.backgroundColor = 'white';
+            botao.style.backgroundColor = 'blue';
         }
         }
         function MarcarCartela(td)
@@ -118,23 +118,41 @@
             {
             td.style.backgroundColor = "black";
             td.style.color = "white";
-            }else{
+            }
+            else
+            {
             td.style.backgroundColor = "antiquewhite";
             td.style.color = "";
             }
         }
-
-        function NumeroaAleatorio(numeroMinimo, numeroMaximo) {
-            var retorno = Math.floor(Math.random() * numeroMaximo)
-            if (retorno > 0 && retorno >= numeroMinimo && retorno <= numeroMaximo)
+        function NumeroAleatorio(NumeroMinimo, NumeroMaximo) {
+            var retorno = Math.floor(Math.random() * NumeroMaximo)
+            if (retorno > 0 && retorno >= NumeroMinimo && retorno <= NumeroMaximo)
         {
             return retorno
-        } else {
-            return NumeroAleatorio(numeroMinimo, numeroMaximo)
+        }
+        else
+        {
+            return NumeroAleatorio(NumeroMinimo, NumeroMaximo)
         }
         }
-
+ 
+        function MisturarArray(array)
+        {
+            var aleatorio
+            var cont = array.length
+            var auxiliar
+            while (cont != 0)
+            {
+                aleatorio = NumeroAleatorio(1, array.length)
+                cont--
+                auxiliar = array[cont]
+                array[cont] = array[aleatorio]
+                array[aleatorio] = auxiliar
+            }
+            return array
+        }
     </script>
-    
 </body>
-</html>
+</html>/
+ 
